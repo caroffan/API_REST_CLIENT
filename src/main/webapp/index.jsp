@@ -8,6 +8,7 @@
 <form method="post" name="ville">
     <label>
         <select>
+            <option value="">Choisissez une ville</option>
 
         </select>
     </label>
