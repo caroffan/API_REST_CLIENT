@@ -34,11 +34,25 @@ public class Api {
 
         String citiesJSON = response.body();
         JSONArray jsonArray = new JSONArray(citiesJSON);
-        JSONObject jsonObject = jsonArray.getJSONObject(0);
-        String json = jsonObject.toString();
         ObjectMapper mapper = new ObjectMapper();
         List<City> cities = mapper.readValue(citiesJSON, new TypeReference<List<City>>(){});
         return cities;
 
+    }
+
+    public String updateApi(City city) throws IOException, InterruptedException {
+        ObjectMapper mapper = new ObjectMapper();
+        //Converting the Object to JSONString
+        String requestBody = mapper.writeValueAsString(city);
+
+        System.out.println(requestBody);
+        HttpRequest request = HttpRequest.newBuilder()
+                .PUT(HttpRequest.BodyPublishers.ofString(requestBody))
+                .uri(URI.create(API_URL+"/"+city.getCodeCommune()))
+                .build();
+
+        HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
+        System.out.println(response.body());
+        return response.body();
     }
 }

@@ -12,7 +12,7 @@
     <style>
         <%@include file="/css/jquery.dynatable.css" %>
     </style>
-    <title>Accueil</title>
+    <title>List of Cities</title>
 
 </head>
 <body class="font-sans bg-gray-100">
@@ -37,14 +37,13 @@
                     <tbody class="bg-white">
                     <c:forEach items="${cities}" var="city" varStatus="status">
                         <tr class="text-gray-700">
-                            <c:set var="index" value="${status}" scope="session" />
-                            <td ><a href="accueil"> ${city.codeCommune}</a></td>
-                            <td ><a href="accueil"> ${city.nomCommune}</a></td>
-                            <td ><a href="accueil"> ${city.codePostal}</a></td>
-                            <td ><a href="accueil"> ${city.libelleAcheminement}</a></td>
-                            <td ><a href="accueil"> ${city.ligne5}</a></td>
-                            <td ><a href="accueil"> ${city.latitude}</a></td>
-                            <td ><a href="accueil"> ${city.longitude}</a></td>
+                            <td ><a href="ville?index=${status.count}"> ${city.codeCommune}</a></td>
+                            <td ><a href="ville?index=${status.count}"> ${city.nomCommune}</a></td>
+                            <td ><a href="ville?index=${status.count}"> ${city.codePostal}</a></td>
+                            <td ><a href="ville?index=${status.count}"> ${city.libelleAcheminement}</a></td>
+                            <td ><a href="ville?index=${status.count}"> ${city.ligne5}</a></td>
+                            <td ><a href="ville?index=${status.count}"> ${city.latitude}</a></td>
+                            <td ><a href="ville?index=${status.count}"> ${city.longitude}</a></td>
                         </tr>
                     </c:forEach>
                     </tbody>
@@ -85,6 +84,9 @@
     $(function () {
         // Code JS
         $(".dynatable-sort-header").css("color", "white");
+        $("#dynatable-query-search-myTable").css("border-width", "2px");
+        $("#dynatable-query-search-myTable").css("border-color", "#14b8a6");
+        $("#dynatable-query-search-myTable").css("heigth", "0.5em");
     });
 </script>
 </html>

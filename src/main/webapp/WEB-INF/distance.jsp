@@ -11,7 +11,7 @@
     </style>
     <title>Distance Between 2 Cities</title>
 </head>
-<body class="font-sans bg-gray-200">
+<body class=" bg-gray-200">
 <%@include file="entete.jsp" %>
 
 <div class="w-full h-[90vh] flex flex-col justify-center items-center p-10 font-mono">
