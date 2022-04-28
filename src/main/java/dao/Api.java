@@ -49,10 +49,10 @@ public class Api {
         HttpRequest request = HttpRequest.newBuilder()
                 .PUT(HttpRequest.BodyPublishers.ofString(requestBody))
                 .uri(URI.create(API_URL+"/"+city.getCodeCommune()))
+                .setHeader("Content-Type", "application/json")
                 .build();
 
         HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
-        System.out.println(response.body());
         return response.body();
     }
 

@@ -40,12 +40,13 @@ public class Ville extends HttpServlet {
         city.setLigne5(request.getParameter("ligne5"));
         city.setLatitude(request.getParameter("latitude"));
         city.setLongitude(request.getParameter("longitude"));
-
+        String rs = null;
         try {
-            api.updateApi(city);
+            rs = api.updateApi(city);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+        System.out.println(rs);
         response.sendRedirect(request.getContextPath() + "/listCities");
     }
 }

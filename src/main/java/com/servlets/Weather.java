@@ -48,9 +48,6 @@ public class Weather extends HttpServlet {
         }
 
         request.setAttribute("weather", weather);
-//        PrintWriter output = response.getWriter();
-//        output.println(weather);
-
         this.getServletContext().getRequestDispatcher("/WEB-INF/meteo.jsp").forward(request, response);
 
     }
