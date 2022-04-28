@@ -22,6 +22,10 @@ td{
 	padding: 0.30rem 1rem;
 	border-width: 1px;
 }
-a {
-
+.delete {
+	width: 2.5rem;
+	height: 2.5rem;
+	border-radius: 0.5rem; /* 8px */
+	background-color: red;
+	padding: 0.5rem;
 }

@@ -1,31 +1,27 @@
 package com.servlets;
 
-import beans.City;
 import dao.Api;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
-@WebServlet(name = "ListCities", value = "/listCities")
-public class ListCities extends HttpServlet {
+@WebServlet(name = "Delete", value = "/delete")
+public class Delete extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         Api api = new Api();
-        List<City> cities = new ArrayList<City>();
+        String codeINSEE = request.getParameter("codeINSEE");
         try {
-            cities = api.getApi();
+            api.deleteApi(codeINSEE);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
         HttpSession session = request.getSession();
-        session.setAttribute("cities", cities);
-        String message = (String) session.getAttribute("alertDelete");
-        request.setAttribute("alertDelete", message);
-        this.getServletContext().getRequestDispatcher("/WEB-INF/listCities.jsp").forward(request, response);
+        session.setAttribute("alertDelete", "The city have been deleted");
+        response.sendRedirect(request.getContextPath() + "/listCities");
     }
 
     @Override

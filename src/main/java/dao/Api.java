@@ -55,4 +55,15 @@ public class Api {
         System.out.println(response.body());
         return response.body();
     }
+
+    public String deleteApi(String codeCommune) throws IOException, InterruptedException {
+        HttpRequest request = HttpRequest.newBuilder()
+                .DELETE()
+                .uri(URI.create(API_URL+"/"+codeCommune))
+                .build();
+
+        HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
+        System.out.println(response.body());
+        return response.body();
+    }
 }

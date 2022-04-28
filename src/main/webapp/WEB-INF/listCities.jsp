@@ -25,25 +25,30 @@
                 <table id="myTable" class="w-full rounded-lg">
                     <thead class="rounded-t-md">
                     <tr class="text-md font-semibold tracking-wide text-left text-gray-100 bg-gray-800 uppercase border-b border-black">
-                        <th >Code INSEE</th>
-                        <th >Nom</th>
-                        <th >Code Postal</th>
-                        <th >Libelle Acheminement</th>
-                        <th >Ligne5</th>
-                        <th >Latitude</th>
+                        <th>Code INSEE</th>
+                        <th>Nom</th>
+                        <th>Code Postal</th>
+                        <th>Libelle Acheminement</th>
+                        <th>Ligne5</th>
+                        <th>Latitude</th>
                         <th>Longitude</th>
+                        <th>Delete</th>
                     </tr>
                     </thead>
                     <tbody class="bg-white">
                     <c:forEach items="${cities}" var="city" varStatus="status">
                         <tr class="text-gray-700">
-                            <td ><a href="ville?index=${status.count}"> ${city.codeCommune}</a></td>
-                            <td ><a href="ville?index=${status.count}"> ${city.nomCommune}</a></td>
-                            <td ><a href="ville?index=${status.count}"> ${city.codePostal}</a></td>
-                            <td ><a href="ville?index=${status.count}"> ${city.libelleAcheminement}</a></td>
-                            <td ><a href="ville?index=${status.count}"> ${city.ligne5}</a></td>
-                            <td ><a href="ville?index=${status.count}"> ${city.latitude}</a></td>
-                            <td ><a href="ville?index=${status.count}"> ${city.longitude}</a></td>
+                            <td><a href="ville?index=${status.count}"> ${city.codeCommune}</a></td>
+                            <td><a href="ville?index=${status.count}"> ${city.nomCommune}</a></td>
+                            <td><a href="ville?index=${status.count}"> ${city.codePostal}</a></td>
+                            <td><a href="ville?index=${status.count}"> ${city.libelleAcheminement}</a></td>
+                            <td><a href="ville?index=${status.count}"> ${city.ligne5}</a></td>
+                            <td><a href="ville?index=${status.count}"> ${city.latitude}</a></td>
+                            <td><a href="ville?index=${status.count}"> ${city.longitude}</a></td>
+                            <td><a href="delete?codeINSEE=${city.codeCommune}">
+                                <img src="https://zupimages.net/up/22/17/94cs.png" class="delete">
+                            </a>
+                            </td>
                         </tr>
                     </c:forEach>
                     </tbody>
@@ -55,6 +60,15 @@
 </main>
 
 </body>
+<%
+    String message = (String)request.getAttribute("alertDelete");
+    if(message != null){
+%>
+<script type="text/javascript">
+    var msg = "<%=message%>";
+    alert(msg);
+</script>
+<%}%>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script>
     <%@include file="/js/jquery.dynatable.js" %>
